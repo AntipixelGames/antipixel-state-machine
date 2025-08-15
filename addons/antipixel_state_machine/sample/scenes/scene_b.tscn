@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcnbd0nu4ucnn"]
+
+[ext_resource type="Script" uid="uid://dib7f5hcxnqlk" path="res://addons/antipixel_state_machine/scripts/script_state_machine.gd" id="1_dkwa0"]
+[ext_resource type="Script" uid="uid://33om6labvjd4" path="res://addons/antipixel_state_machine/scripts/states/script_node_state.gd" id="2_p4hct"]
+[ext_resource type="Script" uid="uid://cd3q2d3enr5cn" path="res://addons/antipixel_state_machine/sample/scripts/script_button.gd" id="3_fhra5"]
+[ext_resource type="Script" uid="uid://ytvlx22l0qmi" path="res://addons/antipixel_state_machine/sample/scripts/script_background.gd" id="3_p4hct"]
+
+[node name="SceneA" type="Node"]
+
+[node name="LocalNumberStateMachine" type="Node" parent="."]
+script = ExtResource("1_dkwa0")
+id = "number"
+metadata/_custom_type_script = "uid://dib7f5hcxnqlk"
+
+[node name="1" type="Node" parent="LocalNumberStateMachine" node_paths=PackedStringArray("node")]
+script = ExtResource("2_p4hct")
+node = NodePath("../../VBoxContainer/Labels/Label1")
+metadata/_custom_type_script = "uid://33om6labvjd4"
+
+[node name="2" type="Node" parent="LocalNumberStateMachine" node_paths=PackedStringArray("node")]
+script = ExtResource("2_p4hct")
+node = NodePath("../../VBoxContainer/Labels/Label2")
+metadata/_custom_type_script = "uid://33om6labvjd4"
+
+[node name="3" type="Node" parent="LocalNumberStateMachine" node_paths=PackedStringArray("node")]
+script = ExtResource("2_p4hct")
+node = NodePath("../../VBoxContainer/Labels/Label3")
+metadata/_custom_type_script = "uid://33om6labvjd4"
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+script = ExtResource("3_p4hct")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Labels" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LabelScene" type="Label" parent="VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 100
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label1" type="Label" parent="VBoxContainer/Labels"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Labels"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Labels"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumberButtons" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="Button1" type="Button" parent="VBoxContainer/NumberButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "1"
+script = ExtResource("3_fhra5")
+machine_id = "number"
+state_id = "1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/NumberButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "2"
+script = ExtResource("3_fhra5")
+machine_id = "number"
+state_id = "2"
+
+[node name="Button3" type="Button" parent="VBoxContainer/NumberButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "3"
+script = ExtResource("3_fhra5")
+machine_id = "number"
+state_id = "3"
+
+[node name="ColorButtons" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonRed" type="Button" parent="VBoxContainer/ColorButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Red"
+script = ExtResource("3_fhra5")
+machine_id = "color"
+state_id = "red"
+data = ["New Color: Red", Color(1, 0.25098, 0.25098, 1)]
+
+[node name="ButtonGreen" type="Button" parent="VBoxContainer/ColorButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Green"
+script = ExtResource("3_fhra5")
+machine_id = "color"
+state_id = "green"
+data = ["New Color: Green", Color(0.25098, 1, 0.25098, 1)]
+
+[node name="ButtonBlue" type="Button" parent="VBoxContainer/ColorButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Blue"
+script = ExtResource("3_fhra5")
+machine_id = "color"
+state_id = "blue"
+data = ["New Color: Blue", Color(0.25098, 0.25098, 1, 1)]
+
+[node name="ButtonScene" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Change Scene"
+script = ExtResource("3_fhra5")
+machine_id = "main"
+state_id = "a"

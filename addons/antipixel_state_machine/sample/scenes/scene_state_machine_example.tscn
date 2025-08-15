@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvv4t0wbi5abl"]
+
+[ext_resource type="Script" uid="uid://dib7f5hcxnqlk" path="res://addons/antipixel_state_machine/scripts/script_state_machine.gd" id="2_ltodk"]
+[ext_resource type="Script" uid="uid://ddpjr3r4poe28" path="res://addons/antipixel_state_machine/scripts/states/script_packed_scene_state.gd" id="3_ltodk"]
+[ext_resource type="PackedScene" uid="uid://dswcnquoqccus" path="res://addons/antipixel_state_machine/sample/scenes/scene_a.tscn" id="4_2wn0p"]
+[ext_resource type="PackedScene" uid="uid://bcnbd0nu4ucnn" path="res://addons/antipixel_state_machine/sample/scenes/scene_b.tscn" id="4_rm1yy"]
+[ext_resource type="Script" uid="uid://cg4ldq0eeeok4" path="res://addons/antipixel_state_machine/scripts/script_state.gd" id="5_2wn0p"]
+
+[node name="StateMachineExample" type="Node"]
+
+[node name="GlobalMainStateMachine" type="Node" parent="."]
+script = ExtResource("2_ltodk")
+id = "main"
+metadata/_custom_type_script = "uid://dib7f5hcxnqlk"
+
+[node name="A" type="Node" parent="GlobalMainStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("3_ltodk")
+parent = NodePath("../..")
+scene = ExtResource("4_2wn0p")
+metadata/_custom_type_script = "uid://ddpjr3r4poe28"
+
+[node name="B" type="Node" parent="GlobalMainStateMachine" node_paths=PackedStringArray("parent")]
+script = ExtResource("3_ltodk")
+parent = NodePath("../..")
+scene = ExtResource("4_rm1yy")
+is_initial = true
+metadata/_custom_type_script = "uid://ddpjr3r4poe28"
+
+[node name="GlobalColorStateMachine" type="Node" parent="."]
+script = ExtResource("2_ltodk")
+id = "color"
+autoinit = false
+metadata/_custom_type_script = "uid://dib7f5hcxnqlk"
+
+[node name="Red" type="Node" parent="GlobalColorStateMachine"]
+script = ExtResource("5_2wn0p")
+metadata/_custom_type_script = "uid://cg4ldq0eeeok4"
+
+[node name="Green" type="Node" parent="GlobalColorStateMachine"]
+script = ExtResource("5_2wn0p")
+metadata/_custom_type_script = "uid://cg4ldq0eeeok4"
+
+[node name="Blue" type="Node" parent="GlobalColorStateMachine"]
+script = ExtResource("5_2wn0p")
+metadata/_custom_type_script = "uid://cg4ldq0eeeok4"
