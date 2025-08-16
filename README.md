@@ -1,3 +1,5 @@
+<img width="4001" height="2251" alt="thumbnail_state_machine_godot" src="https://github.com/user-attachments/assets/a146bc93-7cb4-4d02-908e-2f81f9cba3c8" />
+
 # State Machine | ANTIPIXEL
 ## State logic made easy!
 
